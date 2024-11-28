@@ -49,6 +49,7 @@ export class EventService {
   private list_server_client: string[] = ['1', '2', '3']; // ? List server client is available
 
   private place_bet_cl: string[] = ['C', 'L', 'T', 'X'];
+  private place_bet_boss: string[] = ['0', '1'];
   private place_bet_x: string[] = ['CT', 'CX', 'LT', 'LX'];
   private type_place: string[] = ['cl', 'x'];
   private url_server = 'http://localhost:3031';
@@ -241,7 +242,7 @@ export class EventService {
   }
 
   // TODO Call API to Main Server
-  async place_bet_on_server(data: PlaceField, type: string) {
+  async place_bet_on_server(data: PlaceField, type: '24' | 'boss') {
     try {
       await this.httpService.axiosRef.post(
         this.url_server + `/user/v2/place/${type}`,
@@ -434,8 +435,10 @@ export class EventService {
             time_late - 50,
           );
           const amount = this.getRandomNumberInRange_a(min, max, 1e1);
-          const type_place = this.randomize_bet_type_place();
-          const place = this.randomize_bet_place(type_place as 'cl' | 'x');
+          const randomIndex = Math.floor(
+            Math.random() * this.place_bet_boss.length,
+          );
+          const place = this.place_bet_boss[randomIndex];
 
           list_filter_bots.push({
             data: {
