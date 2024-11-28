@@ -203,9 +203,16 @@ export class EventService {
   getRandomNumberInRange_a(
     min: number,
     max: number,
-    roundingFactor: number,
+    roundingFactor: number = 1,
   ): number {
-    const randomValue = Math.floor(Math.random() * (max - min + 1)) + min;
+    if (min > max) {
+      throw new Error('Giá trị min không được lớn hơn max.');
+    }
+    if (roundingFactor <= 0) {
+      throw new Error('roundingFactor phải lớn hơn 0.');
+    }
+
+    const randomValue = Math.random() * (max - min) + min;
     return Math.round(randomValue / roundingFactor) * roundingFactor;
   }
 
