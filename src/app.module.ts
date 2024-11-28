@@ -14,7 +14,7 @@ import { TaskJobService } from './task-job/task-job.service';
       isGlobal: true,
       envFilePath: '.env',
     }),
-    MongooseModule.forRoot(process.env.URI_DATABASE),
+    MongooseModule.forRoot(process.env.DATABASE_URI),
     ScheduleModule.forRoot(),
     EventEmitterModule.forRoot(),
     EventModule,
