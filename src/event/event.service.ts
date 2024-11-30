@@ -441,7 +441,7 @@ export class EventService {
             time_late - 100,
             time_late - 50,
           );
-          const amount = this.getRandomNumberInRange_a(min, max, 1e1);
+          const amount = this.getRandomNumberInRange_a(min, max - 1000, 1e1);
           const randomIndex = Math.floor(
             Math.random() * this.place_bet_boss.length,
           );

@@ -7,6 +7,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { EventModule } from './event/event.module';
 import { TaskJobService } from './task-job/task-job.service';
+import { SocketClientService } from './socket/socket.service';
 
 @Module({
   imports: [
@@ -20,6 +21,6 @@ import { TaskJobService } from './task-job/task-job.service';
     EventModule,
   ],
   controllers: [AppController],
-  providers: [AppService, TaskJobService],
+  providers: [AppService, TaskJobService, SocketClientService],
 })
 export class AppModule {}
