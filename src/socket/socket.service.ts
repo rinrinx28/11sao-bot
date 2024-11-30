@@ -14,7 +14,7 @@ export class SocketClientService implements OnModuleInit, OnModuleDestroy {
 
   connectToServer() {
     // Replace with the correct URL of your server
-    this.socket = io(process.env.URI_SOCKET2);
+    this.socket = io(process.env.URI_SOCKET_BE);
 
     // Manually connect to the server
     this.socket.connect();
