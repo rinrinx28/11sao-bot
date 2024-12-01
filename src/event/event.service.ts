@@ -460,9 +460,7 @@ export class EventService {
         }
 
         // Select random bots to place bets and execute with delay
-        const list_bot_random_place =
-          this.getRandomBotsForBet(list_filter_bots);
-        for (const { data, time } of list_bot_random_place) {
+        for (const { data, time } of list_filter_bots) {
           setTimeout(async () => {
             await this.place_bet_on_server(data, 'boss');
             this.logger.log(
@@ -470,7 +468,6 @@ export class EventService {
             );
           }, time);
         }
-
         this.logger.log(`Auto bets placed on server ${server}`);
       }
     } catch (err: any) {
