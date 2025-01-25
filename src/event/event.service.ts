@@ -46,7 +46,7 @@ export class EventService {
 
   private logger: Logger = new Logger('Bot Auto');
   // private max_bet_of_bot: number = 6; // ? Bot can bet max is 6 of 12 Server
-  private list_server_client: string[] = ['1', '2', '3']; // ? List server client is available
+  private list_server_client: string[] = ['1', '2', '3', '4']; // ? List server client is available
 
   private place_bet_cl: string[] = ['C', 'L', 'T', 'X'];
   private place_bet_boss: string[] = ['0', '1'];
@@ -245,7 +245,7 @@ export class EventService {
     const [start, end] = range.split('-').map(Number);
     const currentHour = new Date().getHours();
 
-    return currentHour >= start && currentHour < end;
+    return currentHour >= start && currentHour <= end;
   }
 
   // TODO Call API to Main Server
